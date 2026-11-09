@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Chest Room">
+  <defs>
+    <radialGradient id="back" cx=".42" cy=".3" r=".84"><stop stop-color="#324849"/><stop offset="1" stop-color="#122125"/></radialGradient>
+    <linearGradient id="form" x2=".95" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#ccf5dd"/><stop offset=".5" stop-color="#82c6ac"/><stop offset="1" stop-color="#447e74"/></linearGradient>
+    <linearGradient id="plate" x1="0" x2="1" y2=".7"><stop stop-color="#d7a678"/><stop offset=".49" stop-color="#e9bf91"/><stop offset="1" stop-color="#9e6c51"/></linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="46" fill="url(#back)"/>
+  <g stroke="#a3e4c9" stroke-width="3.4" fill="none" stroke-linejoin="round"><path d="m24 27 7-3 4 5h8l4-5 7 3-2 15-7 3-4 6h-5l-4-6-7-3z"/><path d="m26 37 26-3"/></g>
+  <path d="M141 43q19 6 38 0l3 30q13 11 37 17l21 11-8 48-24 41-6 71q-43 18-85 0l-7-72-24-42-8-45 22-14q23-4 37-15z" fill="url(#form)"/>
+  <path d="M88 94l21-7q18 28 51 35 33-7 52-35l19 8-7 36q-2 19 12 31l-13 45-22 8-6 26q-16 17-35 25-19-8-35-25l-6-26-22-8-13-45q14-12 12-31z" fill="url(#plate)" fill-opacity=".86" stroke="#efc799" stroke-width="4" stroke-linejoin="round"/>
+  <g stroke="#614d43" opacity=".72" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m99 164 45 14 16-7 16 7 46-14m-62 10v67"/><path d="m122 213 38 12 39-12"/></g>
+</svg>

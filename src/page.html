@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chest Room</title><!-- bundle:style.css --></head>
+<body><main id="chest-room">
+<header><div class="brand"><span class="shield" aria-hidden="true"></span><h1>Chest Room</h1></div><button id="home" hidden>Library</button></header>
+<section class="bench"><div class="stage"><canvas id="scene" aria-label="Torso and armor in 3D"></canvas><canvas hidden id="cut" aria-label="Armor cross-section"></canvas>
+<div class="toolbar" id="tools" hidden></div><div class="hud"><button id="reset">Reset view</button><small id="gesture">Drag to orbit · Scroll to zoom</small></div></div>
+<aside><div id="panel"></div><p id="status" role="status" aria-live="polite"></p><div id="footer" hidden></div></aside></section>
+<input type="file" id="file" accept=".stl" hidden></main>
+<!-- bundle:vendor/three.min.js --><!-- bundle:vendor/OrbitControls.js --><!-- bundle:vendor/TransformControls.js -->
+<!-- bundle:geometry.js --><!-- bundle:library.js --><!-- bundle:studio.js --><!-- bundle:app.js -->
+</body></html>
