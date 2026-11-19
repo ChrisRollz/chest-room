@@ -4,6 +4,8 @@ An OrcaSlicer tab for sizing cosplay breastplates, backplates and cuirasses.
 
 ## Install
 
+Find [Chest Room on the OrcaSlicer Plugin Hub](https://cloud.orcaslicer.com/p/4eb3f2417cb9). Subscribe, then refresh **File → Plugins** in OrcaSlicer and activate **Chest Room**.
+
 In OrcaSlicer 2.5.0, open **File → Plugins**. Open the arrow beside **Install plugin**, select **Install local plugin**, click the install button and choose [chest_room_any.py](dist/chest_room_any.py). Activate **Chest Room** and open its tab. Keep the same filename for local updates.
 
 You can also [try the standalone preview](dist/preview.html) in a desktop browser. The browser stores its own library and downloads fitted STLs.
