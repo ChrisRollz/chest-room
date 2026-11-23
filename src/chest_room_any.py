@@ -3,7 +3,7 @@
 # dependencies = []
 # [tool.orcaslicer.plugin]
 # name = "Chest Room"
-# version = "0.1.0"
+# version = "0.1.1"
 # description = "Fit cosplay torso armor to a measured torso or scan and open fitted plates in OrcaSlicer."
 # ///
 import base64
@@ -103,7 +103,7 @@ class ChestRoomPage(orca.pages.PagesPluginCapabilityBase):
         if action == "begin":
             self.cancel()
             kind, size = data["mode"], data["size"]
-            if kind not in ("library", "export") or type(size) is not int or not 0 < size <= LIMIT:
+            if kind not in ("library", "export", "reference") or type(size) is not int or not 0 < size <= LIMIT:
                 raise ValueError("Choose an STL up to 96 MiB.")
             if kind == "library":
                 dest = blobs / check_id(data["id"])
@@ -136,7 +136,7 @@ class ChestRoomPage(orca.pages.PagesPluginCapabilityBase):
         dest = t["dest"]
         if t["mode"] == "library" and len(dest.name)==64 and t["hash"].hexdigest()!=dest.name:
             raise ValueError("File checksum mismatch.")
-        if t["mode"] == "export":
+        if t["mode"] in ("export", "reference"):
             f.seek(80)
             if t["size"] < 134 or 84+struct.unpack("<I",f.read(4))[0]*50 != t["size"]:
                 raise ValueError("Invalid fitted STL.")
@@ -148,6 +148,8 @@ class ChestRoomPage(orca.pages.PagesPluginCapabilityBase):
             if t["mode"] != "library":
                 raise
         self.cancel()
+        if t["mode"] == "reference":
+            return {"path": str(dest)}
         if t["mode"] == "export":
             try:
                 open_in_orca(dest)

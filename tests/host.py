@@ -65,6 +65,9 @@ with tempfile.TemporaryDirectory() as directory:
     assert result["opened"] and opened == [Path(result["path"])]
     assert opened[0].read_bytes() == stl
 
+    reference = upload(stl, mode="reference", name="Shoulder reference")
+    assert Path(reference["path"]).read_bytes() == stl and len(opened) == 1
+
     def unavailable(path):
         raise OSError("Test host handoff unavailable")
     tab.action.__globals__["open_in_orca"] = unavailable

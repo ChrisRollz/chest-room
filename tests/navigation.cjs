@@ -145,6 +145,15 @@ async function run() {
     await click("3D");
     await page.getByText("Precise alignment", { exact: true }).click();
     await page.getByLabel("Z (°)", { exact: true }).fill("21");
+    const refReady=page.waitForEvent("download");
+    await click("Save shoulder reference for Arm Room");
+    const ref=await fs.readFile(await (await refReady).path());
+    assert.equal(ref.toString("ascii",0,12),"ROOMSHOULDER");
+    assert.equal(ref.readUInt32LE(12),1);
+    assert.equal(ref.readFloatLE(16),205);
+    assert.equal(ref.readFloatLE(28),-205);
+    assert.equal(ref.readUInt32LE(80),initial.readUInt32LE(80)+back.buffer.readUInt32LE(80));
+    if(process.env.CHEST_REFERENCE_STL)await fs.writeFile(process.env.CHEST_REFERENCE_STL,ref);
     await click("Reset this plate");
     assert.equal(await page.getByLabel("Plate scale (%)").inputValue(), "100");
     await page.getByLabel("Plate scale (%)").fill("107");

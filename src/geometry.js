@@ -331,7 +331,25 @@ const ChestGeometry = (() => {
     geometry.computeVertexNormals();
     return geometry;
   }
+  // One binary STL with the original world transforms and two shoulder landmarks.
+  function shoulderReference(meshes, anchors) {
+    const triangles=meshes.reduce((sum,m)=>sum+(m.geometry.index?.count ?? m.geometry.attributes.position.count)/3,0);
+    const size=84+triangles*50;
+    if(size>96*1024*1024)throw Error("The combined reference exceeds 96 MiB. Export one plate at a time.");
+    const bytes=new Uint8Array(size), header=new DataView(bytes.buffer);
+    bytes.set(new TextEncoder().encode("ROOMSHOULDER"));
+    header.setUint32(12,1,true);
+    anchors.flat().forEach((coordinate,i)=>header.setFloat32(16+i*4,coordinate,true));
+    header.setUint32(80,triangles,true);
+    let offset=84;
+    for(const mesh of meshes){
+      const facets=new Uint8Array(stl(mesh),84);
+      bytes.set(facets,offset);offset+=facets.length;
+    }
+    return bytes.buffer;
+  }
   return {
+    shoulderReference,
     defaults,
     steps,
     mannequin,

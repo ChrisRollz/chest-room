@@ -693,6 +693,16 @@
     row(
       btn("Replace " + labelOf(active).toLowerCase(), () => loadPlate(active)),
     );
+    details.append(btn("Save shoulder reference for Arm Room",()=>work("Preparing shoulder reference…",async()=>{
+      if(profile.source!=="measured")throw Error("Use a measured torso for shoulder landmarks, or open the fitted plate STL directly in Arm Room.");
+      const {shoulders,depth,length}=profile.values;
+      // Match the torso generator’s outer shoulder ring, including its posterior offset.
+      const anchors=[1,-1].map(sign=>[sign*shoulders/2,depth*.055,length*(.22+.93)]);
+      const data=G.shoulderReference([...studio.layers.values()],anchors);
+      const name=(rev?rev.name+"-"+rev.version:profile.name)+"-shoulder-reference";
+      const result=await lib.send(data,name,"reference");
+      note(result.download?"Shoulder reference downloaded. Choose it in Arm Room.":"Choose this reference in Arm Room: "+result.path);
+    })));
     footer.append(
       btn("Save fit…", saveDialog),
       btn(

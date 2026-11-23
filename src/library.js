@@ -117,8 +117,8 @@ function chestLibrary() {
         throw error;
       }
   }
-  async function send(bytes, name) {
-    if (native) return transfer(bytes, { mode: "export", name });
+  async function send(bytes, name, mode = "export") {
+    if (native) return transfer(bytes, { mode, name });
     const link = document.createElement("a");
     link.download = name + ".stl";
     link.href = URL.createObjectURL(new Blob([bytes]));

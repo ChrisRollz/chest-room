@@ -17,6 +17,7 @@ You can also [try the standalone preview](dist/preview.html) in a desktop browse
 3. Turn on **Preview foam pads** for matching foam patches at the chest and upper back. The thickness is measured along the front–back axis. Sweep a front, side or top cut, drag the selected piece in the cut plane, or use **Measure gap** to measure between the body or a foam edge and the selected plate. A section shows clearance at that slice.
 4. Use **Save fit…** to store both poses, the reference torso and foam thickness under a name and version. Reopen from **Library → Saved fits**. To revise a measured torso, choose it in the library and select **Modify torso**. The revision gets its own entry.
 5. Select a plate and choose **Open plate in OrcaSlicer**. Each output contains only that plate at its fitted scale and orientation. The library preserves its placement relative to the other plate. If the system handoff is unavailable, Chest Room displays the saved STL path.
+6. For a pauldron, open **Precise alignment → Save shoulder reference for Arm Room** on a measured torso. In [Arm Room](https://cloud.orcaslicer.com/p/468422fa52d1), open a shoulder fit and choose **Shoulder overlap → Add chest reference**. The file carries the fitted plates and shoulder landmarks together. For helmets, see [Head Room](https://cloud.orcaslicer.com/p/4dea41994d30).
 
 ## Build and verify
 
